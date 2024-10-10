@@ -1,0 +1,5 @@
+C é uma linguagem compilada, portanto, deve-se compilar o codigo antes de executar
+
+Compilar -> gcc nomedoprograma -o nomedoprograma
+
+Executar -> ./nomedoprograma
