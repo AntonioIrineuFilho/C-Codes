@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main(int argc, char **argv) {
-  printf("Hello, Wordl");
+  printf("Hello, World!\n");
   return 0;
 }
