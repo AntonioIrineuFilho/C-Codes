@@ -9,8 +9,9 @@ int mod(int a, int b) {
 }
 
 int main() {
-
-    int x = mod(10, 4);
-    printf("%d", x);
+    int n1, n2;
+    scanf("%d", &n1);
+    scanf("%d", &n2);
+    printf("%d\n", mod(n1, n2));
     return 0;
 }
