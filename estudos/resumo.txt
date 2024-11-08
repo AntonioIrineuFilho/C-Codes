@@ -1,0 +1,91 @@
+Um programa em C acontece dentro de uma função main, que deve ser iniciada como um inteiro
+
+int main() {
+    *codigo*
+    return 0;
+}
+
+Além disso, para possibilitar a entrada e saída de dados, é necessário importar a biblioteca <stdio.h>
+
+#include <stdio.h>
+
+// VARIÁVEIS E TIPOS DE DADOS //
+
+Uma variável deve sempre ser declarada antes de ser utilizada, isso pode ser feito atribuindo um valor ou não, mas necessariamente atribuindo um tipo
+
+Os principais tipos básicos são: int(inteiro), float(decimal com menor capacidade), double(decimal com maior capacidade),
+char(caractere), char[](string)
+
+Declaração:
+
+int num;
+int num = 0;
+
+float num = 7.5;
+double num = 7.5555;
+
+char c = "A";
+char[] = "Hello, World!"
+
+Principais tipos derivados são: arrays(coleção de elementos do mesmo tipo), ponteiros(váriaveis que armazenam endereços de memória), 
+struct(uma estrutura semelhantes a uma classe, mas que agrupa apenas variáveis de tipos diferentes)
+
+int colecao[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+int x;
+int *p = &x; // ponteiro para x
+
+struct Pessoa {
+    char nome[50];
+    int idade;
+    char sexo;
+}
+
+struct Pessoa pessoa1 = {"Antônio", 19, "M"};
+
+// CONVERSÃO DE DADOS //
+
+Conversão implícita -> Quando um dado passa de um tipo para outro sem risco de perda de dados, como um número inteiro sendo convertido para float
+
+int a = 10;
+float b = a; // "a" foi convertido para float sem risco de perda de informações
+
+Conversão explícita -> Também chamado de type casting, ocorre quando a conversão pode ocasionar em perda de dados
+
+int a = 31;
+float b = (float) 31 / 2;
+
+double x = 567.88873222489;
+float y = (float) x; // saída = 567.888733
+
+char w[] = "1234";
+int z = (int)strtol(w, NULL, 10); // o valor após o NULL indica a base, se colocar 2 ele converte considerando que a string é um número binário
+passando para decimal, se colocar 16, ele considera que a string é um hexadecimal passando para decimal e se colocar 10 ele considera que é um decimal
+
+// OPERADORES LÓGICOS, RELACIONAIS E ARITMÉTICOS //
+
+C possui uma gama de operadores aritméticos (+, -, *, /, %), relacionais (==, !=, <, >, <=, >=) e lógicos (&&, ||, !)
+
+// ENTRADA E SAÍDA //
+
+Saída -> printf("%tipo de dado", variavel);
+Entrada -> scanf("%tipo de dado", &variavel);
+
+%d -> int
+%f -> float / double
+%c -> char
+%s -> char[] // string
+
+Outra forma de leitura de entrada é utilizando as funções gets e fgets
+
+gets -> lê uma linha inteira até o EOF ou \n, não é recomendado pois pode estourar o limite do arrays
+
+fgets -> a mais recomendada, pois possui uma função sizeof(array) que controla o limite do array de forma segura
+
+Para ler números é melhor utilizar o scanf, para strings, fgets!
+
+// ESTRUTURAS DE CONTROLE //
+
+
+
+
