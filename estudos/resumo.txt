@@ -84,8 +84,175 @@ fgets -> a mais recomendada, pois possui uma função sizeof(array) que controla
 
 Para ler números é melhor utilizar o scanf, para strings, fgets!
 
-// ESTRUTURAS DE CONTROLE //
+// ESTRUTURAS DE CONTROLE CONDICIONAIS //
+
+if else -> desvia o fluxo do código conforme condições
+
+if (condição) {
+    código
+} else if (outra condição) {
+    código
+} else {
+    código
+}
+
+switch case -> alternativa para o if else, utilizado para quando há muitas condições, para evitar excesso de "else if"
+
+int n = 1;
+
+switch (n) {
+    case 1:
+        printf("n é 1.");
+        break; // necessário para cessar o fluxo
+    case 2:
+        printf("n é 3.");
+        break;
+    case 3:
+        printf("n é 3.");
+        break;
+    default: // equivalente ao else, quando não houver caso 
+        printf("n é menor que 1 ou maior que 3.")
+        break;
+}
+
+// ESTRUTURAS DE CONTROLE DE REPETIÇÃO //
+
+for -> repetição controlada, com quantidade especificada de iterações
+
+no for declara-se uma variável de controle, define uma condição de parada e um incremento ou decremento para possibilitar as iterações
+
+for (int i = 1; i <= 5; i++) {
+    printf("%d", i);
+}
+
+while -> realiza iterações até uma condição de parada ser atendida sem um range limitado
+
+while (condição de parada) {
+    código
+}
+
+int cont = 1;
+
+while (cont <= 5) {
+    printf("%d", cont);
+    cont++;
+}
+
+do while -> semelhante ao while, mas garante que o código vai ser executado pelo menos uma vez, uma vez que a condição é verificada no final do fluxo
 
 
+do {
+    código
+} while (condição de parada)
 
+int cont = 1;
 
+do {
+    printf("%d", cont);
+    cont++;
+} while (cont <= 5);
+
+continue -> pula a iteração atual quando acionado
+
+break -> encerra o laço no qual o break está presente(ou seja, se tiver laços aninhados, só vai encerrar o laço que ele estiver)
+
+// ARRAYS 
+
+arrays são coleções de elementos de um mesmo tipo
+
+são declarados como variáveis comuns, porém com um limite de itens especificado
+
+cada item é acessado por meio de um índice, que vai de 0 até tamanho-1
+
+int arr[5];
+
+int arr[5] = {1, 2, 3, 4, 5};
+
+arr[0] -> 1
+
+arr[4] -> 5
+
+para atribuir valores ao array, basta acessar pelo índice e atribuir um valor para cada posição
+
+int arr[10];
+
+for (int i = 0; i < 10; i++) {
+    arr[i] = i;
+}
+
+para printar cada elemento de um array, pode-se utilizar um laço para mostrar cada item individualmente
+
+for (int i = 0; i < 10; i++) {
+    printf("%d ", arr[i]);
+}
+
+matriz -> arrays multidimensionais, basicamente tabelas(linhas e colunas)
+
+o primeiro tamanho refere-se ao número de linhas e o segundo, ao número de colunas
+
+int matriz[5][5];
+
+// adicionando valores
+
+for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+        matriz[i][j] = i+1;
+    }
+}
+
+OU 
+
+matriz[5][5] = {
+    {1, 1, 1, 1, 1},
+    {2, 2, 2, 2, 2},
+    {3, 3, 3, 3, 3},
+    {4, 4, 4, 4, 4},
+    {5, 5, 5, 5, 5}
+};
+
+// printando valores
+
+for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+        printf("%d ", matriz[i][j]);
+    }
+    printf("\n");
+}
+
+// FUNÇÃO
+
+uma função é um bloco de código reutilizável
+
+em C, primeiro define-se o tipo de retorno da função(se ela não tiver retorno utiliza-se void) depois, o nome e os parâmetros(caso tenha)
+
+int soma(int a, int b) {
+    return a + b;
+}
+
+para chamar a função, basta usar o nome e passar os parâmetros caso necessariamente
+
+soma(23, 37); // retorna o valor 60
+
+os parâmetros na função são passados por valor ou refêrencia
+
+por valor -> uma cópia do valor original é passada e retornada, mas o valor original se mantém
+
+int soma20(a) {
+    a = a + 20;
+    return a;
+}
+
+int a = 10;
+
+soma20(a); // retorna 30, mas o valor de a permanece 10
+
+por referência -> o valor original é modificado por meio de um ponteiro para o endereço de memoria do valor original passado na função
+
+int soma20(*a) {
+    *a = *a + 20;
+    return *a;
+}
+
+int a = 10;
+
+soma20(&a); // valor original se torna 30
