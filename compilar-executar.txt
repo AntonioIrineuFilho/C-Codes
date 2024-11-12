@@ -1,5 +1,5 @@
 C é uma linguagem compilada, portanto, deve-se compilar o codigo antes de executar
 
-Compilar -> gcc nomedoprograma -o nomedoprograma(sem bibliotecas) / gcc -o meuprograma meuprograma.c -lm(com bibliotecas)
+Compilar -> gcc nomedoprograma -o nomedoprograma(sem bibliotecas) / gcc -o meuprograma meuprograma.c -lm(com biblioteca math)
 
 Executar -> ./nomedoprograma
