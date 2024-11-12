@@ -256,3 +256,29 @@ int soma20(*a) {
 int a = 10;
 
 soma20(&a); // valor original se torna 30
+
+// RECURSÃO
+
+uma função chamar ela mesma até alcançar uma condição de parada(caso base), onde todas as chamadas vão retornando para 
+sua imediatamente anterior, até chegar na primeira chamada
+
+// PONTEIROS
+
+ponteiros são formas de manipular variáveis indiretamente, por meio dos endereços de memoria os quais as variáveis estão
+
+declaração -> tipo *p = &variavel
+
+para declarar um ponteiro coloca * e um nome, e na atribuição passa o endereço da memoria da variavel desejada
+
+int a = 10;
+
+int *ponteiro = &a; // o ponteiro aponta para o valor dentro do endereço de memoria, logo, se o ponteiro for modificado 
+a variavel original também é, uma vez que o endereço é COMPARTILHADO
+
+ponteiro para array -> localiza o elemento pelo indice e aponta para o endereço de memoria
+
+para referenciar um ponteiro para cada elemento do array, utiliza-se ponteiro + indice
+
+for (int i = 0; i < 10; i++) {
+    printf("%d ", *(ponteiro + i));
+}
