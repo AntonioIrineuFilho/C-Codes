@@ -47,39 +47,37 @@ void inserirNormal(struct Fila *normal, int *indiceNormal) {
     *(indiceNormal)++;
 }
 
-void removerPreferencial(struct Fila *preferencial, int *indicePref, int *tamanhoPref, int ind) {
-    for (int i = ind; i < *tamanhoPref - 1; i++) {
+void removerPreferencial(struct Fila *preferencial, int *indicePref, int ind) {
+    for (int i = ind; i < *indicePref - 1; i++) {
         preferencial->pessoa[i] = preferencial->pessoa[i+1];
     }
-    *(tamanhoPref)--;
     *(indicePref)--;
 }
 
-void removerNormal(struct Fila *normal, int *indiceNormal, int *tamanhoNormal, int ind) {
-    for (int i = ind; i < *tamanhoNormal - 1; i++) {
+void removerNormal(struct Fila *normal, int *indiceNormal, int ind) {
+    for (int i = ind; i < *indiceNormal - 1; i++) {
         normal->pessoa[i] = normal->pessoa[i+1];
     }
-    *(tamanhoNormal)--;
     *(indiceNormal)--;
 }
 
-void atenderFila(struct Fila *normal, struct Fila *preferencial, int *indiceNormal, int *tamanhoNormal, int *indicePref, int *tamanhoPref, int *vez) {
+void atenderFila(struct Fila *normal, struct Fila *preferencial, int *indiceNormal, int *indicePref, int *vez) {
     if ((*vez) % 2 == 0) {
-        for (int i = 0; i < *tamanhoPref; i++) {
+        for (int i = 0; i < *indicePref; i++) {
             if (preferencial->pessoa[i].pref == "idoso") {
-                removerPreferencial(&preferencial, &indicePref, &tamanhoPref, i);
+                removerPreferencial(&preferencial, &indicePref, i);
                 break;
             }
-            if (i == *tamanhoPref - 1) {
-                for (int j = 0; j < *tamanhoPref; j++) {
+            if (i == *indicePref - 1) {
+                for (int j = 0; j < *indicePref; j++) {
                     if (preferencial->pessoa[i].pref == "gestante") {
-                        removerPreferencial(&preferencial, &indicePref, &tamanhoPref, j);
+                        removerPreferencial(&preferencial, &indicePref, j);
                         break;
                     }
-                    if (j == *tamanhoPref - 1) {
-                        for (int k = 0; k < *tamanhoPref - 1; k++) {
+                    if (j == *indicePref - 1) {
+                        for (int k = 0; k < *indicePref - 1; k++) {
                             if (preferencial->pessoa[k].pref == "deficiente") {
-                                removerPreferencial(&preferencial, &indicePref, &tamanhoPref, k);
+                                removerPreferencial(&preferencial, &indicePref, k);
                                 break;
                             }
                         }
@@ -89,19 +87,19 @@ void atenderFila(struct Fila *normal, struct Fila *preferencial, int *indiceNorm
         }
         (*vez)++;
         } else {
-            removerNormal(&normal, &indiceNormal, &tamanhoNormal, 0);
+            removerNormal(&normal, &indiceNormal, 0);
             (*vez)++;
         }
 }
 
-void listarFilas(struct Fila normal, struct Fila preferencial, int tamanhoNormal, int tamanhoPref) {
+void listarFilas(struct Fila normal, struct Fila preferencial, int indiceNormal, int indicePref) {
     printf("Preferencial: \n\n");
-    for (int i = 0; i < tamanhoPref; i++) {
+    for (int i = 0; i < indicePref; i++) {
         printf("Nome: %s Idade: %d Prefêrencia: %s\n", preferencial.pessoa[i].nome, preferencial.pessoa[i].idade, preferencial.pessoa[i].pref);
     }
     printf("\n");
     printf("Normal: \n\n");
-    for (int i = 0; i < tamanhoNormal; i++) {
+    for (int i = 0; i < indiceNormal; i++) {
         printf("Nome: %s Idade: %d\n", normal.pessoa[i].nome, normal.pessoa[i].idade);
     }
 }
@@ -113,8 +111,6 @@ int main() {
     int op;
     int indiceNormal = 0;
     int indicePref = 0;
-    int tamanhoNormal = 100;
-    int tamanhoPref = 100;
     int vez = 0;
     while (run == 1) {
         printf("1-Inserir pessoa na fila preferencial\n2-Inserir pessoa na fila normal\n3-Remover pessoa da lista preferencial\n4-Remover pessoa da lista normal\n5-Atender pessoa\n6-Listar filas\n7-Sair\n");
@@ -131,16 +127,16 @@ int main() {
                 int ind;
                 printf("Digite a posição na fila da pessoa desejada: ");
                 scanf("%d", &ind);
-                removerPreferencial(&preferencial, &indicePref, &tamanhoPref, ind);
+                removerPreferencial(&preferencial, &indicePref, ind);
                 break;
             case 4:
                 int ind;
                 printf("Digite a posição na fila da pessoa desejada: ");
                 scanf("%d", &ind);
-                removerNormal(&normal, &indiceNormal, &tamanhoNormal, ind);
+                removerNormal(&normal, &indiceNormal, ind);
                 break;
             case 5:
-                atenderFila(&normal, &preferencial, &indiceNormal, &tamanhoNormal, &indicePref, &tamanhoPref, &vez);
+                atenderFila(&normal, &preferencial, &indiceNormal, &indicePref, &vez);
                 break;
             case 6:
                 printf("FIM DE EXECUÇÃO.");

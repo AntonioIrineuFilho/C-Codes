@@ -50,7 +50,6 @@ void deletarContato(struct Contato agenda[], int *tamanho, int *indice) {
     for (int j = i; j < *tamanho - 1; j++) {
         agenda[j] = agenda[j+1];
     }
-    (*tamanho)--;
     (*indice)--;
 }
 
